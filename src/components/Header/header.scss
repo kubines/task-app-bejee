@@ -1,0 +1,16 @@
+header {
+    width: 100%;
+    background: #5DD0C0;
+
+    &>div {
+        display: flex;
+        height: 50px;
+        justify-content: flex-end;
+        align-items: center;
+
+        &>span {
+            cursor: pointer;
+            color: #00685A;
+        }
+    }
+}
