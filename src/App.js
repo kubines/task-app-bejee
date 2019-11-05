@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+
+import Header from './components/Header'
+import TaskCreate from './components/TaskCreate'
+import TaskList from './components/TaskList'
+
+import './app.scss'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        sessionStorage.getItem('token') && dispatch({ type: 'SET_LOGIN' })
+    }, [dispatch])
+
+    return (
+        <React.Fragment>
+            <Header />
+            <div className='container'>
+                <TaskCreate />
+                <TaskList />
+            </div>
+        </React.Fragment>
+
+    )
 }
 
-export default App;
+export default App
