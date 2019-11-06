@@ -19,7 +19,7 @@ const Task = ({ username, email, text, status, id, editAdmin }) => {
         let token = () => sessionStorage.getItem('token')
         form.append("text", task.text)
         form.append("status", task.status)
-        form.append("token", token)
+        form.append("token", token())
         const url = new URL(`https://uxcandy.com/~shapoval/test-task-backend/v2/edit/${id}?developer=name`)
         const res = await fetch(url, {
             headers: {},
